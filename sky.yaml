@@ -1,6 +1,6 @@
 name: sky-vscode
 resources:
-  accelerators: K80:1
+  accelerators: T4:1
   cloud: aws
 workdir: .
 file_mounts: 
