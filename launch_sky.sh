@@ -1,0 +1,1 @@
+sky launch -c vscode sky.yaml -i 120 -y

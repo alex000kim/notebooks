@@ -1,0 +1,24 @@
+name: sky-vscode
+resources:
+  accelerators: K80:1
+  cloud: aws
+workdir: .
+file_mounts: 
+  ~/.ssh/id_rsa: ~/.ssh/id_rsa
+  ~/.ssh/id_rsa.pub: ~/.ssh/id_rsa.pub
+  ~/.gitconfig: ~/.gitconfig
+setup: |
+  pip install --upgrade pip
+  pip install -r requirements.txt
+  sudo snap install --classic code
+  code --install-extension ms-python.python
+  code --install-extension ms-toolsai.jupyter
+  code --install-extension GitHub.copilot
+  code --install-extension GitHub.copilot-labs
+  code --install-extension GitHub.copilot-chat
+  # Below is optional nvtop installation if you want to monitor GPU usage
+  sudo add-apt-repository ppa:flexiondotorg/nvtop
+  sudo apt install nvtop
+run: |
+  code tunnel --accept-server-license-terms
+  
